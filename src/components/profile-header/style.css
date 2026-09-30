@@ -32,14 +32,14 @@
 }
 
 .profile-info-name {
-  margin-bottom: 4px;
+  margin-bottom: 16px;
   text-align: left;
   position: relative;
 }
 
 .profile-info-name .profile-underline {
   position: absolute;
-  bottom: 0;
+  bottom: -8px;
   left: 0;
 }
 
