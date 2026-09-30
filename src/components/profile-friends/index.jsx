@@ -55,12 +55,20 @@ export const ProfileFriends = () => {
         <h2 className="page-heading-2">Friends</h2>
         <ul className="profile-friends-list">
           {friends.map((friend, index) => (
-            <li className="profile-list-item fade-in" key={index}>
+            <li
+              className={`profile-list-item fade-in${
+                friend.topFriend ? ' profile-list-item--top-friend' : ''
+              }`}
+              key={friend.id ?? friend.name}
+            >
               <div
                 className="profile-list-item-avatar"
                 aria-label="Stuart Raymond"
               ></div>
               <div className="profile-list-item-info">
+                {friend.topFriend && (
+                  <span className="top-friend-flag">Top friend</span>
+                )}
                 <p className="page-paragraph">{friend.name}</p>
                 <p className="page-micro">
                   {friend.jobTitle} @ {friend.companyName}

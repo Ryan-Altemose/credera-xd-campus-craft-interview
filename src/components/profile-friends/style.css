@@ -23,15 +23,25 @@
   border-radius: 10px;
 }
 
+.profile-list-item--top-friend {
+  border: 2px solid var(--secondary);
+}
+
 .profile-list-item:last-child {
   margin-bottom: 0;
 }
 
-.profile-list-item .top-friend-flag {
-  display: none;
+.top-friend-flag {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--deepSmoke);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  text-transform: uppercase;
 }
 
-.profile-list-item .top-friend-flag + .page-paragraph {
+.top-friend-flag + .page-paragraph {
   margin-bottom: 8px;
 }
 
