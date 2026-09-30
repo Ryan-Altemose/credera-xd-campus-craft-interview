@@ -2,6 +2,13 @@ import './style.css';
 import { getProfileData } from '../../services/profile';
 import { useQuery } from '@tanstack/react-query';
 
+const activityClassNames = {
+  active: 'profile-group-results-card--active',
+  moderate: 'profile-group-results-card--moderate',
+  low: 'profile-group-results-card--low',
+  inactive: 'profile-group-results-card--inactive',
+};
+
 export const ProfileGroups = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['profile'],
@@ -50,7 +57,9 @@ export const ProfileGroups = () => {
         {groups.map(group => (
           <li className="profile-group-results-item" key={group.id}>
             <a
-              className="profile-group-results-card content-card fade-in"
+              className={`profile-group-results-card content-card fade-in ${
+                activityClassNames[group.activity] ?? ''
+              }`}
               href={group.href}
             >
               <div className="profile-group-avatar">

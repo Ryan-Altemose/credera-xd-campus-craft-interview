@@ -39,6 +39,22 @@
 
 }
 
+.profile-group-results-card--active {
+  background-color: var(--secondary);
+}
+
+.profile-group-results-card--moderate {
+  background-color: var(--primary);
+}
+
+.profile-group-results-card--low {
+  background-color: var(--warning);
+}
+
+.profile-group-results-card--inactive {
+  background-color: #c4c4c4;
+}
+
 .profile-group-content {
   padding: 16px 8px;
 }
