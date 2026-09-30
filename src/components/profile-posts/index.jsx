@@ -2,6 +2,13 @@ import './style.css';
 import { getProfileData } from '../../services/profile';
 import { useQuery } from '@tanstack/react-query';
 
+const formatPublishedDate = date =>
+  new Intl.DateTimeFormat(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(new Date(date));
+
 export const ProfilePosts = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['profile'],
@@ -47,6 +54,15 @@ export const ProfilePosts = () => {
             </div>
           </div>
           <p className="page-body post-content fade-in">{pinnedPost.post}</p>
+          <div className="post-meta page-micro fade-in">
+            <time dateTime={pinnedPost.publishDate}>
+              {formatPublishedDate(pinnedPost.publishDate)}
+            </time>
+            <span aria-hidden="true">·</span>
+            <span>
+              {pinnedPost.city}, {pinnedPost.state}
+            </span>
+          </div>
         </div>
       </div>
     </section>
