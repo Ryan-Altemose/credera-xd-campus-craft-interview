@@ -35,8 +35,31 @@
   max-width: 200px;
   background-color: var(--grayscale_1);
   text-decoration: none;
-  color: var(--midnight_black);
+  color: var(--midnightBlack);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
+.profile-group-results-card:hover,
+.profile-group-results-card:focus-visible {
+  color: var(--midnightBlack);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 18px grey;
+}
+
+.profile-group-results-card:focus-visible {
+  outline: 3px solid var(--darkNavy);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-group-results-card {
+    transition: none;
+  }
+
+  .profile-group-results-card:hover,
+  .profile-group-results-card:focus-visible {
+    transform: none;
+  }
 }
 
 .profile-group-results-card--active {
