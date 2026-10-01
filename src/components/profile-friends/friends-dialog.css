@@ -1,0 +1,104 @@
+.profile-friends-view-all {
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: var(--darkNavy);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.profile-friends-dialog-close {
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: var(--midnightBlack);
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.profile-friends-view-all:focus-visible,
+.profile-friends-dialog-close:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.profile-friends-view-all:focus:not(:focus-visible),
+.profile-friends-dialog-close:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.profile-friends-dialog {
+  width: min(600px, calc(100vw - 32px));
+  height: min(80vh, 760px);
+  max-height: 80vh;
+  margin: auto;
+  padding: 24px;
+  border: 0;
+  border-radius: 20px;
+  background-color: var(--grayscale_0);
+  color: var(--midnightBlack);
+}
+
+.profile-friends-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-friends-dialog::backdrop {
+  background-color: rgba(24, 32, 42, 0.55);
+}
+
+.profile-friends-dialog-header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.profile-friends-dialog-title:focus {
+  outline: none;
+}
+
+.profile-friends-search {
+  flex: 0 0 auto;
+  margin-top: 16px;
+  border-bottom: 1px solid var(--grayscale_2);
+}
+
+.profile-friends-search label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.profile-friends-search input {
+  width: 100%;
+  min-height: 44px;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--grayscale_2);
+  border-radius: 10px;
+  background-color: var(--grayscale_0);
+  color: var(--midnightBlack);
+  font: inherit;
+}
+
+.profile-friends-search input:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.profile-friends-dialog-list {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.profile-friends-empty {
+  margin-top: 20px;
+  text-align: center;
+}
