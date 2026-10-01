@@ -1,4 +1,5 @@
 import './style.css';
+import { Avatar } from '../avatar';
 import { getProfileData } from '../../services/profile';
 import { useQuery } from '@tanstack/react-query';
 
@@ -30,9 +31,11 @@ export const ProfileHeader = () => {
   return (
     <section id="profile-header">
       <div className="profile-header">
-        <div className="profile-avatar">
-          <img className="loading" src="/avatar.png" />
-        </div>
+        <Avatar
+          className="profile-avatar"
+          profile={data}
+          src="/avatar.png"
+        />
         <div className="profile-info content-card">
           <h1 className="profile-info-name">
             {fullName}

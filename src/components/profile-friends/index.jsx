@@ -1,4 +1,5 @@
 import './style.css';
+import { Avatar } from '../avatar';
 import { getFriendsListData } from '../../services/profile';
 import { useQuery } from '@tanstack/react-query';
 
@@ -81,10 +82,10 @@ export const ProfileFriends = () => {
               }`}
               key={friend.id ?? getFriendDisplayName(friend)}
             >
-              <div
+              <Avatar
                 className="profile-list-item-avatar"
-                aria-label="Stuart Raymond"
-              ></div>
+                profile={friend}
+              />
               <div className="profile-list-item-info">
                 {friend.topFriend && (
                   <span className="top-friend-flag">Top friend</span>
