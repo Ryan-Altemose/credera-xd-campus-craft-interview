@@ -60,9 +60,26 @@
 }
 
 .profile-group-avatar {
+  position: relative;
   display: inline-block;
   height: 190px;
   width: 100%;
+}
+
+.profile-group-favorite-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--grayscale_0);
+  color: var(--midnightBlack);
+  font-size: 18px;
+  line-height: 1;
 }
 
 .profile-group-avatar + p {

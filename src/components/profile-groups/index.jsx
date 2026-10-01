@@ -64,6 +64,16 @@ export const ProfileGroups = () => {
             >
               <div className="profile-group-avatar">
                 <img src={group.image} />
+                {group.favorite && (
+                  <span
+                    className="profile-group-favorite-badge"
+                    role="img"
+                    aria-label="Favorite group"
+                    title="Favorite group"
+                  >
+                    ★
+                  </span>
+                )}
               </div>
               <div className="profile-group-content">
                 <p className="page-paragraph">{group.name}</p>
