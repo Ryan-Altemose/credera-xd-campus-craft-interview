@@ -1,7 +1,5 @@
 import './style.css';
 import { Avatar } from '../avatar';
-import { getProfileData } from '../../services/profile';
-import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 
 const formatPublishedDate = date =>
@@ -40,12 +38,7 @@ function Collapsible({ title, children }) {
   );
 }
 
-export const ProfilePosts = () => {
-  const { data, isLoading } = useQuery({
-    queryKey: ['profile'],
-    queryFn: getProfileData,
-  });
-
+export const ProfilePosts = ({ data, isLoading }) => {
   if (isLoading) {
     return (
       <section id="profile-posts">

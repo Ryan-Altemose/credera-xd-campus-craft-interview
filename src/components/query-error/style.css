@@ -1,0 +1,25 @@
+.query-error {
+  margin: 24PX;
+  padding: 24px;
+  border-radius: 20px;
+  background-color: var(--grayscale_1);
+}
+
+.query-error .page-paragraph {
+  margin-bottom: 16px;
+}
+
+.query-error button {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  background-color: var(--darkNavy);
+  color: var(--grayscale_0);
+  font: inherit;
+  cursor: pointer;
+}
+
+.query-error button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}

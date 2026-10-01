@@ -1,9 +1,7 @@
 import React from 'react';
 import { Layout } from './components/layout';
 import { Navigation } from './components/navigation';
-import { ProfileHeader } from './components/profile-header';
-import { ProfilePosts } from './components/profile-posts';
-import { ProfileGroups } from './components/profile-groups';
+import { ProfileSections } from './components/profile-sections';
 import { ProfileFriends } from './components/profile-friends';
 import { Footer } from './components/footer';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -25,9 +23,7 @@ function App() {
         <Navigation />
         <div className="content-grid container">
           <div className="content-grid-block--main">
-            <ProfileHeader />
-            <ProfilePosts />
-            <ProfileGroups />
+            <ProfileSections />
           </div>
           <div className="content-grid-block--friends">
             <ProfileFriends />

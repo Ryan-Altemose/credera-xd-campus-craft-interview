@@ -1,14 +1,7 @@
 import './style.css';
 import { Avatar } from '../avatar';
-import { getProfileData } from '../../services/profile';
-import { useQuery } from '@tanstack/react-query';
 
-export const ProfileHeader = () => {
-  const { data, isLoading } = useQuery({
-    queryKey: ['profile'],
-    queryFn: getProfileData,
-  });
-
+export const ProfileHeader = ({ data, isLoading }) => {
   if (isLoading)
     return (
       <section id="profile-header">

@@ -1,6 +1,4 @@
 import './style.css';
-import { getProfileData } from '../../services/profile';
-import { useQuery } from '@tanstack/react-query';
 
 const activityClassNames = {
   active: 'profile-group-results-card--active',
@@ -9,12 +7,7 @@ const activityClassNames = {
   inactive: 'profile-group-results-card--inactive',
 };
 
-export const ProfileGroups = () => {
-  const { data, isLoading } = useQuery({
-    queryKey: ['profile'],
-    queryFn: getProfileData,
-  });
-
+export const ProfileGroups = ({ data, isLoading }) => {
   if (isLoading)
     return (
       <section id="profile-groups">

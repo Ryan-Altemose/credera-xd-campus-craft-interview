@@ -3,6 +3,7 @@ import { getFriendsListData } from '../../services/profile';
 import { useQuery } from '@tanstack/react-query';
 import { FriendsDialog } from './FriendsDialog';
 import { FriendList } from './FriendList';
+import { QueryError } from '../query-error';
 
 const REGULAR_FRIENDS_PREVIEW_COUNT = 3;
 
@@ -22,7 +23,7 @@ const sortFriends = friends =>
   });
 
 export const ProfileFriends = () => {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['friends'],
     queryFn: getFriendsListData,
   });
@@ -65,6 +66,20 @@ export const ProfileFriends = () => {
         </div>
       </section>
     );
+
+  if (isError) {
+    return (
+      <section id="profile-friends">
+        <div className="content-card fade-in">
+          <h2 className="page-heading-2">Friends</h2>
+          <QueryError
+            message="We couldn't load your friends. Please try again."
+            onRetry={refetch}
+          />
+        </div>
+      </section>
+    );
+  }
 
   const friends = sortFriends(data.friends);
   const topFriends = friends.filter(friend => friend.topFriend);
