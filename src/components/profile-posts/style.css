@@ -7,6 +7,43 @@
   background-color: var(--grayscale_1);
 }
 
+.profile-posts-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.profile-posts-toggle:focus {
+  outline: none;
+}
+
+.profile-posts-toggle:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.profile-posts-chevron {
+  width: 10px;
+  height: 10px;
+  margin: 0 4px 5px 0;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.profile-posts-toggle[aria-expanded='true'] .profile-posts-chevron {
+  margin-bottom: -5px;
+  transform: rotate(225deg);
+}
+
 .profile-post-results {
   margin-top: 16px;
 }
