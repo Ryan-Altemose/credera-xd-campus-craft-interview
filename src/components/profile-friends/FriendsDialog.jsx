@@ -70,7 +70,7 @@ export const FriendsDialog = ({ friends, hasHiddenFriends }) => {
             onClick={() => dialogRef.current?.close()}
             aria-label="Close friends dialog"
           >
-            Ã—
+            ×
           </button>
         </div>
         <div className="profile-friends-search">
