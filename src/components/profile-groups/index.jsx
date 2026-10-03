@@ -56,7 +56,7 @@ export const ProfileGroups = ({ data, isLoading }) => {
               href={group.href}
             >
               <div className="profile-group-avatar">
-                <img src={group.image} />
+                <img src={group.image} alt="" />
                 {group.favorite && (
                   <span
                     className="profile-group-favorite-badge"
