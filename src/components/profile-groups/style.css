@@ -35,13 +35,13 @@
   max-width: 200px;
   background-color: var(--grayscale_1);
   text-decoration: none;
-  color: var(--midnightBlack);
+  color: #000000;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .profile-group-results-card:hover,
 .profile-group-results-card:focus-visible {
-  color: var(--midnightBlack);
+  color: #000000;
   transform: translateY(-8px);
   box-shadow: 0 8px 18px grey;
 }

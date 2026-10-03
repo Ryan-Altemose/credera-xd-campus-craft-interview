@@ -21,14 +21,14 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Layout>
         <Navigation />
-        <div className="content-grid container">
+        <main className="content-grid container">
           <div className="content-grid-block--main">
             <ProfileSections />
           </div>
           <div className="content-grid-block--friends">
             <ProfileFriends />
           </div>
-        </div>
+        </main>
         <Footer />
       </Layout>
     </QueryClientProvider>

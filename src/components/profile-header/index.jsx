@@ -32,7 +32,7 @@ export const ProfileHeader = ({ data, isLoading }) => {
         <div className="profile-info content-card">
           <h1 className="profile-info-name">
             {fullName}
-            <img src="/underline.svg" className="profile-underline" />
+            <img src="/underline.svg" alt="" className="profile-underline" />
           </h1>
           <p className="page-paragraph page-paragraph--smoke">
             {data?.jobTitle} @ {data?.companyName}
