@@ -38,6 +38,37 @@ function Collapsible({ title, children }) {
   );
 }
 
+function PinnedPostCard({ post }) {
+  return (
+    <div className="content-card">
+      <div className="post-author fade-in">
+        <Avatar
+          className="post-author-avatar fade-in"
+          profile={post}
+        />
+        <div className="post-author-info fade-in">
+          <p className="page-paragraph">
+            {post.authorFirstName} {post.authorLastName}
+          </p>
+          <p className="page-micro">
+            {post.jobTitle} @ {post.companyName}
+          </p>
+        </div>
+      </div>
+      <p className="page-body post-content fade-in">{post.post}</p>
+      <div className="post-meta page-micro fade-in">
+        <time dateTime={post.publishDate}>
+          {formatPublishedDate(post.publishDate)}
+        </time>
+        <span aria-hidden="true">{'·'}</span>
+        <span>
+          {post.city}, {post.state}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export const ProfilePosts = ({ data, isLoading }) => {
   if (isLoading) {
     return (
@@ -59,40 +90,24 @@ export const ProfilePosts = ({ data, isLoading }) => {
     );
   }
 
-  const { pinnedPost } = data;
+  const pinnedPosts = data?.pinnedPosts ?? [];
 
   return (
     <section id="profile-posts">
-      <Collapsible title="Pinned Posts">
-        <div className="profile-post-results">
-          <div className="content-card">
-            <div className="post-author fade-in">
-              <Avatar
-                className="post-author-avatar fade-in"
-                profile={pinnedPost}
+      {pinnedPosts.length > 0 ? (
+        <Collapsible title="Pinned Posts">
+          <div className="profile-post-results">
+            {pinnedPosts.map((post, index) => (
+              <PinnedPostCard
+                key={`${post.authorFirstName}-${post.authorLastName}-${post.publishDate}-${index}`}
+                post={post}
               />
-              <div className="post-author-info fade-in">
-                <p className="page-paragraph">
-                  {pinnedPost.authorFirstName} {pinnedPost.authorLastName}
-                </p>
-                <p className="page-micro">
-                  {pinnedPost.jobTitle} @ {pinnedPost.companyName}
-                </p>
-              </div>
-            </div>
-            <p className="page-body post-content fade-in">{pinnedPost.post}</p>
-            <div className="post-meta page-micro fade-in">
-              <time dateTime={pinnedPost.publishDate}>
-                {formatPublishedDate(pinnedPost.publishDate)}
-              </time>
-              <span aria-hidden="true">{'·'}</span>
-              <span>
-                {pinnedPost.city}, {pinnedPost.state}
-              </span>
-            </div>
+            ))}
           </div>
-        </div>
-      </Collapsible>
+        </Collapsible>
+      ) : (
+        <h2 className="page-heading-2">No Pinned Posts</h2>
+      )}
     </section>
   );
 };
