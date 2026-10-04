@@ -7,10 +7,10 @@
   background-color: var(--grayscale_1);
 }
 
-.profile-posts-toggle {
-  display: inline-flex;
+.profile-post-toggle {
+  display: flex;
   align-items: center;
-  gap: 12px;
+  width: 100%;
   padding: 0;
   border: 0;
   background: transparent;
@@ -20,28 +20,38 @@
   cursor: pointer;
 }
 
-.profile-posts-toggle:focus {
+.profile-post-toggle:focus {
   outline: none;
 }
 
-.profile-posts-toggle:focus-visible {
+.profile-post-toggle:focus-visible {
   outline: 3px solid var(--primary);
   outline-offset: 3px;
+}
+
+.profile-post-toggle[aria-expanded='true'] {
+  padding-bottom: 16px;
 }
 
 .profile-posts-chevron {
   width: 10px;
   height: 10px;
-  margin: 0 4px 5px 0;
+  margin: 0 4px 5px 16px;
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: rotate(45deg);
   transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
-.profile-posts-toggle[aria-expanded='true'] .profile-posts-chevron {
+.profile-post-toggle[aria-expanded='true'] .profile-posts-chevron {
   margin-bottom: -5px;
   transform: rotate(225deg);
+}
+
+.profile-post-details {
+  padding-top: 16px;
+  border-top: 1px solid var(--grayscale_2);
 }
 
 .profile-post-results {
@@ -74,8 +84,14 @@
 }
 
 .post-author-info {
-  width: 100%;
+  display: block;
+  flex: 1;
+  width: auto;
   margin-left: 24px;
+}
+
+.post-author-info > span {
+  display: block;
 }
 
 .post-author-info > :first-child {

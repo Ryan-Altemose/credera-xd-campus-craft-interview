@@ -1,6 +1,6 @@
 import './style.css';
 import { Avatar } from '../avatar';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
 const formatPublishedDate = date =>
   new Intl.DateTimeFormat(undefined, {
@@ -9,61 +9,44 @@ const formatPublishedDate = date =>
     day: 'numeric',
   }).format(new Date(date));
 
-function PinnedPostsCollapsible({ children }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="profile-posts-collapsible">
-      <h2 className="page-heading-2">
-        <button
-          className="profile-posts-toggle"
-          type="button"
-          onClick={() => setIsOpen(open => !open)}
-          aria-expanded={isOpen}
-          aria-controls="pinned-post-content"
-        >
-          <span>Pinned Posts</span>
-          <span className="profile-posts-chevron" aria-hidden="true" />
-        </button>
-      </h2>
-
-      <div
-        className="profile-posts-collapsible-content"
-        id="pinned-post-content"
-        hidden={!isOpen}
-      >
-        {children}
-      </div>
-    </div>
-  );
-}
-
 function PinnedPostCard({ post }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const detailsId = useId();
+
   return (
     <div className="content-card">
-      <div className="post-author fade-in">
+      <button
+        className="profile-post-toggle"
+        type="button"
+        onClick={() => setIsOpen(open => !open)}
+        aria-expanded={isOpen}
+        aria-controls={detailsId}
+      >
         <Avatar
           className="post-author-avatar fade-in"
           profile={post}
         />
-        <div className="post-author-info fade-in">
-          <p className="page-paragraph">
+        <span className="post-author-info fade-in">
+          <span className="page-paragraph">
             {post.authorFirstName} {post.authorLastName}
-          </p>
-          <p className="page-micro">
+          </span>
+          <span className="page-micro">
             {post.jobTitle} @ {post.companyName}
-          </p>
-        </div>
-      </div>
-      <p className="page-body post-content fade-in">{post.post}</p>
-      <div className="post-meta page-micro fade-in">
-        <time dateTime={post.publishDate}>
-          {formatPublishedDate(post.publishDate)}
-        </time>
-        <span aria-hidden="true">{'·'}</span>
-        <span>
-          {post.city}, {post.state}
+          </span>
         </span>
+        <span className="profile-posts-chevron" aria-hidden="true" />
+      </button>
+      <div className="profile-post-details" id={detailsId} hidden={!isOpen}>
+        <p className="page-body post-content fade-in">{post.post}</p>
+        <div className="post-meta page-micro fade-in">
+          <time dateTime={post.publishDate}>
+            {formatPublishedDate(post.publishDate)}
+          </time>
+          <span aria-hidden="true">{'·'}</span>
+          <span>
+            {post.city}, {post.state}
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -94,20 +77,19 @@ export const ProfilePosts = ({ data, isLoading }) => {
 
   return (
     <section id="profile-posts">
+      <h2 className="page-heading-2">
+        {pinnedPosts.length > 0 ? 'Pinned Posts' : 'No Pinned Posts'}
+      </h2>
       {pinnedPosts.length > 0 ? (
-        <PinnedPostsCollapsible>
-          <div className="profile-post-results">
-            {pinnedPosts.map((post, index) => (
-              <PinnedPostCard
-                key={`${post.authorFirstName}-${post.authorLastName}-${post.publishDate}-${index}`}
-                post={post}
-              />
-            ))}
-          </div>
-        </PinnedPostsCollapsible>
-      ) : (
-        <h2 className="page-heading-2">No Pinned Posts</h2>
-      )}
+        <div className="profile-post-results">
+          {pinnedPosts.map((post, index) => (
+            <PinnedPostCard
+              key={`${post.authorFirstName}-${post.authorLastName}-${post.publishDate}-${index}`}
+              post={post}
+            />
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 };
