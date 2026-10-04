@@ -9,7 +9,7 @@ const formatPublishedDate = date =>
     day: 'numeric',
   }).format(new Date(date));
 
-function Collapsible({ title, children }) {
+function PinnedPostsCollapsible({ children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -22,7 +22,7 @@ function Collapsible({ title, children }) {
           aria-expanded={isOpen}
           aria-controls="pinned-post-content"
         >
-          <span>{title}</span>
+          <span>Pinned Posts</span>
           <span className="profile-posts-chevron" aria-hidden="true" />
         </button>
       </h2>
@@ -95,7 +95,7 @@ export const ProfilePosts = ({ data, isLoading }) => {
   return (
     <section id="profile-posts">
       {pinnedPosts.length > 0 ? (
-        <Collapsible title="Pinned Posts">
+        <PinnedPostsCollapsible>
           <div className="profile-post-results">
             {pinnedPosts.map((post, index) => (
               <PinnedPostCard
@@ -104,7 +104,7 @@ export const ProfilePosts = ({ data, isLoading }) => {
               />
             ))}
           </div>
-        </Collapsible>
+        </PinnedPostsCollapsible>
       ) : (
         <h2 className="page-heading-2">No Pinned Posts</h2>
       )}
