@@ -7,6 +7,15 @@ const activityClassNames = {
   inactive: 'profile-group-results-card--inactive',
 };
 
+const sortGroups = groups =>
+  [...groups].sort((a, b) => {
+    if (a.favorite !== b.favorite) return a.favorite ? -1 : 1;
+
+  return a.name.localeCompare(b.name, undefined, {
+      sensitivity: 'base',
+    });
+  });
+
 export const ProfileGroups = ({ data, isLoading }) => {
   if (isLoading)
     return (
@@ -41,8 +50,8 @@ export const ProfileGroups = ({ data, isLoading }) => {
       </section>
     );
 
-  const { groups } = data;
-
+  const groups = sortGroups(data.groups);
+  
   return (
     <section id="profile-groups">
       <h2 className="page-heading-2">Groups</h2>
