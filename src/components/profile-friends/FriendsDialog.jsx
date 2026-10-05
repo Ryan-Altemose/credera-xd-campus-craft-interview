@@ -6,15 +6,10 @@ const matchesSearch = (friend, searchQuery) => {
   const query = searchQuery.trim().toLowerCase();
   if (!query) return true;
 
-  const fullName = friend.firstName || friend.lastName
-    ? [friend.firstName, friend.lastName].filter(Boolean).join(' ')
-    : friend.name;
   const searchableFields = [
-    fullName,
+    friend.name,
     friend.jobTitle,
-    friend.position,
     friend.companyName,
-    friend.company,
   ];
 
   return searchableFields.some(field =>
@@ -90,7 +85,7 @@ export const FriendsDialog = ({ friends, hasHiddenFriends }) => {
             <FriendList friends={filteredFriends} />
           ) : (
             <p className="profile-friends-empty page-micro" role="status">
-              No friends match â€œ{searchQuery}â€.
+              No friends match '{searchQuery}'.
             </p>
           )}
         </div>

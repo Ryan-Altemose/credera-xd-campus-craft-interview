@@ -8,8 +8,6 @@ import { QueryError } from '../query-error';
 const REGULAR_FRIENDS_PREVIEW_COUNT = 3;
 
 const getFriendLastName = friend => {
-  if (friend.lastName) return friend.lastName;
-
   return friend.name?.trim().split(/\s+/).at(-1) ?? '';
 };
 
